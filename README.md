@@ -1,4 +1,5 @@
-## Prototype
+# Mobile Development - OASEE - Fake News Detector App
+## Capstone Project Bangkit 2023
 
 [Link WireFrame](https://miro.com/app/board/uXjVMHi91lM=/?share_link_id=683875958759)
 
