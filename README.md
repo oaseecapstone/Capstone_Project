@@ -26,9 +26,9 @@ There 3 Machine Learning model: model_Hoax_or_Fact_validation.h5, model_summariz
 ## DATASETS
 We get the dataset from 4 website (detik.com, nasional.kompas.com, cnnindonesia.com, turnbackhoax.id)
 
-- [Dataset 1](https://github.com/oaseecapstone/Capstone_Project/blob/main/ML/Dataset/dataset_hoax_or_fact_feature.csv)
-- [Dataset 2](https://github.com/oaseecapstone/Capstone_Project/blob/main/ML/Dataset/dataset_summarize_text_feature.csv)
-- [Dataset 3](https://github.com/oaseecapstone/Capstone_Project/blob/main/ML/Dataset/dataset_summarize_text_feature.csv)
+- [Dataset 1](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_hoax_or_fact_feature.csv)
+- [Dataset 2](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_summarize_text_feature.csv)
+- [Dataset 3](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_sentiment_analysis_feature.csv)
 
 ## DEPLOYMENT 
 We will use TensorFlow Lite to deploy a trained Machine Learning model on Android.
