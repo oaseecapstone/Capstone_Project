@@ -1,4 +1,4 @@
-const { verifyAccessToken } = require('../tokenize/TokenManager');
+const { verifyToken } = require('../tokenize/TokenManager');
 const { UnauthorizedError } = require('../utils/api-errors');
 
 const decodeToken = async (header) => {
@@ -6,7 +6,7 @@ const decodeToken = async (header) => {
     throw new UnauthorizedError('Authorization header missing');
   }
   const token = header.replace('Bearer ', '');
-  const payload = verifyAccessToken(token);
+  const payload = verifyToken(token);
   return payload;
 };
 
@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
     return next();
   }
   try {
-    req.student = await decodeToken(req.headers.authorization);
+    req.payload = await decodeToken(req.headers.authorization);
     return next();
   } catch (err) {
     return next(err);

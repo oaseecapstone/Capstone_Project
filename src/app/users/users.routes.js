@@ -1,3 +1,5 @@
+const { auth } = require('../../middlewares');
+
 module.exports = ({
     router,
     UsersController,
@@ -5,6 +7,9 @@ module.exports = ({
     makeExpressCallback,
     makeValidatorCallback,
 }) => {
+
+    // auth
+    router.use(auth);
 
     // get all users
     router.get('/', makeExpressCallback(UsersController.getAllUsers));

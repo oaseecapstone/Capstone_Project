@@ -481,3 +481,112 @@
   "name": "SequelizeEagerLoadingError",
   "service": "capstone-project-service"
 }
+2023-06-03 23:29:42 error: Error: Authorization header missing
+    at decodeToken (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:6:11)
+    at module.exports (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:19:25)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:317:13)
+    at /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5) Authorization header missing
+ {
+  "status": 403,
+  "service": "capstone-project-service"
+}
+2023-06-03 23:30:22 error: SequelizeConnectionError: Unknown database 'capstone'
+    at ConnectionManager.connect (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/dialects/mysql/connection-manager.js:102:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:222:24)
+    at async /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:174:32
+    at async ConnectionManager.getConnection (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:197:7)
+    at async /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/sequelize.js:305:26
+    at async MySQLQueryInterface.select (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/dialects/abstract/query-interface.js:407:12)
+    at async User.findAll (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/model.js:1140:21)
+    at async User.findOne (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/sequelize/lib/model.js:1240:12)
+    at async Object.loginUser (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/app/auth/auth.service.js:6:27) Unknown database 'capstone'
+ {
+  "name": "SequelizeConnectionError",
+  "parent": {
+    "code": "ER_BAD_DB_ERROR",
+    "errno": 1049,
+    "sqlState": "42000",
+    "sqlMessage": "Unknown database 'capstone'"
+  },
+  "original": {
+    "code": "ER_BAD_DB_ERROR",
+    "errno": 1049,
+    "sqlState": "42000",
+    "sqlMessage": "Unknown database 'capstone'"
+  },
+  "service": "capstone-project-service"
+}
+2023-06-03 23:38:02 error: Error: User not found
+    at Object.loginUser (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/app/auth/auth.service.js:13:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async loginUser (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/app/auth/auth.controller.js:6:22)
+    at async /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/express-callback.js:17:26 User not found
+ {
+  "service": "capstone-project-service"
+}
+2023-06-03 23:38:17 error: Error: Authorization header missing
+    at decodeToken (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:6:11)
+    at module.exports (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:19:25)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:317:13)
+    at /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5) Authorization header missing
+ {
+  "status": 403,
+  "service": "capstone-project-service"
+}
+2023-06-03 23:41:23 error: Error: Authorization header missing
+    at decodeToken (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:6:11)
+    at module.exports (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:19:25)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:317:13)
+    at /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5) Authorization header missing
+ {
+  "status": 403,
+  "service": "capstone-project-service"
+}
+2023-06-03 23:41:39 error: TypeError: verifyAccessToken is not a function
+    at decodeToken (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:9:19)
+    at module.exports (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:19:25)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:317:13)
+    at /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5) verifyAccessToken is not a function
+ {
+  "service": "capstone-project-service"
+}
+2023-06-03 23:44:22 error: Error: Authorization header missing
+    at decodeToken (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:6:11)
+    at module.exports (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/src/middlewares/auth.js:19:25)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:317:13)
+    at /Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/hammam/KULIAH/Capstone-Bangkit/capstone-project/node_modules/express/lib/router/layer.js:95:5) Authorization header missing
+ {
+  "status": 403,
+  "service": "capstone-project-service"
+}
