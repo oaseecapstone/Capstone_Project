@@ -51,7 +51,15 @@ module.exports = (sequelize, DataTypes) => {
                     msg: 'Phone number should 08xxxxxxxxxx',
                 }
             },
-        }, 
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        role: {
+            type: DataTypes.ENUM('admin', 'user'),
+            defaultValue: 'user',
+        },
     }, {
         sequelize,
         tableName: 'users',

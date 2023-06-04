@@ -30,6 +30,8 @@ const AuthService = {
             email: user.email,
             fullname: user.fullname,
             phone: user.phone,
+            image: user.image,
+            role: user.role,
         });
 
         console.log(newUser);

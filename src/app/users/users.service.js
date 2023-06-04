@@ -22,6 +22,24 @@ const UserService = {
         }
 
         return users;
+    },
+
+    updateUser: async (id, data) => {
+        const users = await Models.User.update({
+            image: data.image,
+            fullname: data.fullname,
+            phone: data.phone,
+        }, {
+            where: {
+                id,
+            },
+        });
+
+        if (!users) {
+            throw new Error('User not found');
+        }
+
+        return users;
     }
 
 
