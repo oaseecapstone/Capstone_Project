@@ -23,6 +23,25 @@ module.exports = (userService) => ({
                 data: user
             }
         }
-    }
+    },
+
+    updateUser: async (req) => {
+        const user = await userService.updateUser(req.params.id, req.body);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        return {
+            statusCode: 200,
+            body: {
+                status: 'success',
+                message: 'User updated',
+                data: user
+            }
+        }
+    },
+    
+
 });
 

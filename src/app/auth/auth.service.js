@@ -37,6 +37,21 @@ const AuthService = {
         console.log(newUser);
         return newUser;
     },
+
+    getMe: async (id) => {
+        const foundUser = await Models.User.findOne({
+            where: {
+                id,
+                attributes: ['id', 'username', 'email', 'fullname', 'phone', 'image', 'role'],
+            },
+        });
+
+        if (!foundUser) {
+            throw new Error('User not found');
+        }
+
+        return foundUser;
+    }
 };
 
 module.exports = AuthService;

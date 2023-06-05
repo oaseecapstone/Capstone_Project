@@ -18,6 +18,12 @@ module.exports = ({
         makeValidatorCallback(AuthValidator.postRegisterSchema),
         makeExpressCallback(AuthController.registerUser)
     );
+
+    // get me
+    router.get(
+        '/me',
+        makeExpressCallback(AuthController.getMe)
+    );
     
     return router;
 }

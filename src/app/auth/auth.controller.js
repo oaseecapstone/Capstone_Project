@@ -45,5 +45,22 @@ module.exports = (authService) => ({
             }
         }
     },
+
+    getMe: async (req) => {
+        const user = await authService.getMe(req.user.id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        return {
+            statusCode: 200,
+            body: {
+                status: 'success',
+                message: 'User retrieved',
+                data: user
+            }
+        }
+    }
 });
 

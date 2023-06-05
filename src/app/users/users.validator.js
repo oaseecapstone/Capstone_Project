@@ -14,7 +14,20 @@ const getUserByIdSchema = (httpRequest) => {
     return schema.validate(httpRequest.params, option);
 };
 
+const updateUserSchema = (httpRequest) => {
+    const schema = Joi.object({
+        id: Joi.number(),
+        fullname: Joi.string(),
+        phone: Joi.string().pattern(/^08\d{8,}$/).message('Phone number should 08xxxxxxxxxx'),
+        email: Joi.string().email(),
+        image: Joi.string().allow(null, ''),
+    });
+
+    return schema.validate(httpRequest.body, option);
+};
+
+
 module.exports = {
-    createUserSchema,
     getUserByIdSchema,
+    updateUserSchema,
 };

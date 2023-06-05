@@ -3,10 +3,25 @@ const Models = require('../../models');
 const UserService = {
     getAllUsers: async () => {
         const users = await Models.User.findAll({
-            attributes: ['id', 'username', 'email', 'fullname', 'phone'],
+          attributes: ['id', 'username', 'email', 'fullname', 'phone', 'role'],
         });
-
-        return users;
+      
+        const usersData = users.map((user) => ({
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          fullname: user.fullname,
+          phone: user.phone,
+          role: user.role,
+        }));
+      
+        const isAdmin = usersData.some(user => user.role === 'admin');
+      
+        if (!isAdmin) {
+          throw new Error('Only admin can access this page');
+        }
+      
+        return usersData;
     },
 
     getUserById: async (id) => {
@@ -14,7 +29,7 @@ const UserService = {
             where: {
                 id,
             },
-            attributes: ['id', 'username', 'email', 'fullname', 'phone'],
+            attributes: ['id', 'username', 'email', 'fullname', 'phone', 'image', 'role'],
         });
 
         if (!users) {
@@ -24,24 +39,37 @@ const UserService = {
         return users;
     },
 
-    updateUser: async (id, data) => {
-        const users = await Models.User.update({
-            image: data.image,
-            fullname: data.fullname,
-            phone: data.phone,
-        }, {
+    updateUser: async (id, user) => {
+        const {
+            fullname, phone, image, email,
+        } = user;
+
+        const foundUser = await Models.User.findOne({
             where: {
                 id,
             },
         });
 
-        if (!users) {
+        const transaction = await Models.sequelize.transaction();
+
+        if (!foundUser) {
             throw new Error('User not found');
         }
 
-        return users;
-    }
+        const updatedUser = await foundUser.update({
+            fullname,
+            phone,
+            image,
+            email,
+        }, {
+            where: {
+                id,
+                transaction,
+            },
+        });
 
+        return updatedUser;
+    },
 
 };
 

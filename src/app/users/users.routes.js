@@ -1,4 +1,7 @@
 const { auth } = require('../../middlewares');
+const { isAdmin } = require('../../middlewares');
+const { isUser } = require('../../middlewares');
+const uploadHandler = require('../../middlewares/uploadHandler');
 
 module.exports = ({
     router,
@@ -12,7 +15,9 @@ module.exports = ({
     router.use(auth);
 
     // get all users
-    router.get('/', makeExpressCallback(UsersController.getAllUsers));
+    router.get(
+        '/', 
+        makeExpressCallback(UsersController.getAllUsers));
 
     // get user by id
     router.get(
@@ -22,17 +27,12 @@ module.exports = ({
         )
     );
 
-    // create user
-    router.post(
-        '/register',
-        makeValidatorCallback(UsersValidator.createUserSchema),
-        makeExpressCallback(UsersController.registerUser)
-    );
-
-    // login user
-    router.post(
-        '/login',
-        makeExpressCallback(UsersController.loginUser)
+    // update user
+    router.put(
+        '/:id',
+        makeValidatorCallback(UsersValidator.updateUserSchema),
+        uploadHandler.single('image'),
+        makeExpressCallback(UsersController.updateUser),
     );
     
     return router;
