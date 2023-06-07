@@ -3,45 +3,40 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('newscomment', {
       id: {
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      newslikeId: {
+      userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Newslike',
+          model: 'User',
           key: 'id',
         }
       },
-      newscommentId: {
+      newsId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Newscomment',
+          model: 'News',
           key: 'id',
         }
       },
-      name: {
+      comment: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
-      password: {
+      comment_like: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
-      email: {
+      comment_time: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true
-      },
-      gender: {
-        allowNull: false,
-        type: Sequelize.ENUM('L', 'P')
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -52,11 +47,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()')
-      }
+      } 
     });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('newscomment');
   }
 };

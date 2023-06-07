@@ -2,10 +2,10 @@ const bcrypt = require('bcryptjs');
 const Models = require('../../models');
 
 const AuthService = {
-    loginUser: async (username, password) => {
+    loginUser: async (email, password) => {
         const foundUser = await Models.User.findOne({
             where: {
-                username,
+                email,
             },
         });
 
@@ -25,13 +25,10 @@ const AuthService = {
     createUser: async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 10);
         const newUser = await Models.User.create({
-            username: user.username,
+            name: user.username,
             password: hashedPassword,
             email: user.email,
-            fullname: user.fullname,
-            phone: user.phone,
-            image: user.image,
-            role: user.role,
+            gender: user.gender,
         });
 
         console.log(newUser);
@@ -42,7 +39,7 @@ const AuthService = {
         const foundUser = await Models.User.findOne({
             where: {
                 id,
-                attributes: ['id', 'username', 'email', 'fullname', 'phone', 'image', 'role'],
+                attributes: ['id', 'name', 'email', 'gender'],
             },
         });
 

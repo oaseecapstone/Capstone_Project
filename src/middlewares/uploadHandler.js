@@ -1,27 +1,38 @@
-const multer = require('multer');
-const multerGoogleStorage = require('multer-cloud-storage');
 const path = require('path');
+const { Storage } = require('@google-cloud/storage');
+const multer = require('multer');
 
-const uploadHandler = multer ({
-    storage: multerGoogleStorage.storageEngine({
-        acl: 'publicRead',
-        bucket: 'oase-bucket',
-        projectId: 'gestari',
-        keyFilename: path.join(__dirname, '../config/key.json'),
-        filename: (req, file, cb) => {
-            cb(null, `${Date.now()}-${file.originalname.replace(/\s/g, '')}`);
-        }
-    }),
-    limits: {
-        fileSize: 1024 * 1024 * 5,
-    },
-    fileFilter: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
-            return cb(new Error('Only images are allowed'));
-        }
-        cb(null, true);
-    }
+const storage = new Storage({
+    projectId: 'gestari',
+    keyFilename: path.join(__dirname, '../config/key.json')
 });
 
-module.exports = uploadHandler;
+const bucket = storage.bucket('oase-bucket');
+
+const uploadHandler = multer({ storage: multer.memoryStorage() });
+
+const uploadImage = (file) => new Promise((resolve, reject) => {
+    if (!file) {
+        reject('No image file');
+    }
+
+    const { originalname, buffer } = file;
+    const blob = bucket.file(originalname.replace(/ /g, "_"));
+    const blobStream = blob.createWriteStream({
+        resumable: false,
+    });
+
+    blobStream.on('finish', () => {
+        const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+        resolve(publicUrl);
+    })
+        .on('error', () => {
+            reject('Unable to upload image, something went wrong');
+        })
+        .end(buffer);
+});
+
+module.exports = {
+    uploadHandler,
+    uploadImage,
+};

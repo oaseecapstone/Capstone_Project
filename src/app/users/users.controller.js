@@ -1,3 +1,5 @@
+const { uploadImage } = require('../../middlewares/uploadHandler');
+
 module.exports = (userService) => ({
     getAllUsers: async () => {
         const users = await userService.getAllUsers();
@@ -26,7 +28,14 @@ module.exports = (userService) => ({
     },
 
     updateUser: async (req) => {
-        const user = await userService.updateUser(req.params.id, req.body);
+        console.log(req);
+        const { id } = req.params;
+        const user = await userService.updateUser(
+            id,
+            req.body.fullname,
+            req.body.phone,
+            req.body.email,
+        );
 
         if (!user) {
             throw new Error('User not found');
@@ -41,7 +50,6 @@ module.exports = (userService) => ({
             }
         }
     },
-    
 
 });
 

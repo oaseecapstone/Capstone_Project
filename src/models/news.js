@@ -1,18 +1,15 @@
 const {
-    Model,
+    Model
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class User extends Model {
-        toJSON() {
-          return { ...this.get(), password: undefined };
-        }
+    class News extends Model {
         static associate(models) {
             
         }
     };
 
-    User.init({
+    News.init({
         newslikeId: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -29,41 +26,45 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id',
             }
         },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                notEmpty: { msg: 'Username must not be empty' },
-            },
-        },
-        password: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                notEmpty: { msg: 'Password must not be empty' },
+                notEmpty: { msg: 'Title must not be empty' },
             },
         },
-        email: {
+        author: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-            validate: {
-                notEmpty: { msg: 'Email must not be empty' },
-                is: {
-                    args: /\S+@\S+\.\S+/,
-                    msg: 'Email address must be valid',
-                }
-            },
         },
-        gender: { 
-            type: DataTypes.ENUM('L', 'P'),
+        time: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        sentiment: {
+            type: DataTypes.ENUM('positive', 'negative', 'neutral'),
+            allowNull: false,
+        },
+        score: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        Url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        summerize: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        keyword: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
     }, {
         sequelize,
-        tableName: 'users',
-        modelName: 'User',
+        tableName: 'news',
+        modelName: 'News',
     });
-    return User;
+    return News;
 }

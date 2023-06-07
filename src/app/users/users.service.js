@@ -6,22 +6,7 @@ const UserService = {
           attributes: ['id', 'username', 'email', 'fullname', 'phone', 'role'],
         });
       
-        const usersData = users.map((user) => ({
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          fullname: user.fullname,
-          phone: user.phone,
-          role: user.role,
-        }));
-      
-        const isAdmin = usersData.some(user => user.role === 'admin');
-      
-        if (!isAdmin) {
-          throw new Error('Only admin can access this page');
-        }
-      
-        return usersData;
+        return users;
     },
 
     getUserById: async (id) => {
@@ -39,10 +24,7 @@ const UserService = {
         return users;
     },
 
-    updateUser: async (id, user) => {
-        const {
-            fullname, phone, image, email,
-        } = user;
+    updateUser: async (id, fullname, phone, email, image) => {
 
         const foundUser = await Models.User.findOne({
             where: {
@@ -50,21 +32,17 @@ const UserService = {
             },
         });
 
-        const transaction = await Models.sequelize.transaction();
-
         if (!foundUser) {
             throw new Error('User not found');
         }
 
-        const updatedUser = await foundUser.update({
+        const updatedUser = await Models.User.update({
             fullname,
             phone,
-            image,
             email,
         }, {
             where: {
                 id,
-                transaction,
             },
         });
 

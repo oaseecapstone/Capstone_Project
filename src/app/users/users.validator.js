@@ -1,29 +1,33 @@
 const Joi = require('joi');
 
-const option = {
+const options = {
     abortEarly: false,
     allowUnknown: true,
     stripUnknown: true,
-};
+    errors: {
+      wrap: {
+        label: '',
+      },
+    },
+  };
 
 const getUserByIdSchema = (httpRequest) => {
     const schema = Joi.object({
         id: Joi.number().required(),
     });
 
-    return schema.validate(httpRequest.params, option);
+    return schema.validate(httpRequest.params, options);
 };
 
 const updateUserSchema = (httpRequest) => {
     const schema = Joi.object({
         id: Joi.number(),
-        fullname: Joi.string(),
+        name: Joi.string(),
         phone: Joi.string().pattern(/^08\d{8,}$/).message('Phone number should 08xxxxxxxxxx'),
         email: Joi.string().email(),
-        image: Joi.string().allow(null, ''),
     });
 
-    return schema.validate(httpRequest.body, option);
+    return schema.validate(httpRequest.body, options);
 };
 
 

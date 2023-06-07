@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('news', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -26,22 +26,37 @@ module.exports = {
           key: 'id',
         }
       },
-      name: {
+      title: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
-      password: {
+      author: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
-      email: {
+      time: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.DATE
       },
-      gender: {
+      sentiment: {
         allowNull: false,
-        type: Sequelize.ENUM('L', 'P')
+        type: Sequelize.ENUM('positive', 'negative', 'neutral')
+      },
+      score: {
+        allowNull: false,
+        type: Sequelize.FLOAT
+      },
+      Url: {
+        allowNull: false,
+        type: Sequelize.STRING(100)
+      },
+      summerize: {
+        allowNull: false,
+        type: Sequelize.STRING(100)
+      },
+      keyword: {
+        allowNull: false,
+        type: Sequelize.STRING(100)
       },
       createdAt: {
         allowNull: false,
@@ -57,6 +72,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('news');
   }
 };

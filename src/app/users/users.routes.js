@@ -1,7 +1,6 @@
 const { auth } = require('../../middlewares');
 const { isAdmin } = require('../../middlewares');
-const { isUser } = require('../../middlewares');
-const uploadHandler = require('../../middlewares/uploadHandler');
+const { uploadHandler } = require('../../middlewares/uploadHandler');
 
 module.exports = ({
     router,
@@ -29,11 +28,11 @@ module.exports = ({
 
     // update user
     router.put(
-        '/:id',
+        '/update/:id',
         makeValidatorCallback(UsersValidator.updateUserSchema),
-        uploadHandler.single('image'),
         makeExpressCallback(UsersController.updateUser),
     );
+
     
     return router;
 }

@@ -8,7 +8,7 @@ const option = {
 
 const postLoginSchema = (httpRequest) => {
     const schema = Joi.object({
-        username: Joi.string().required(),
+        email: Joi.string().required(),
         password: Joi.string().required(),
     });
 
@@ -17,15 +17,10 @@ const postLoginSchema = (httpRequest) => {
 
 const postRegisterSchema = (httpRequest) => {
     const schema = Joi.object({
-        username: Joi.string().required().messages({
-            'string.base': 'Username must be a string',
-            'string.empty': 'Username must not be empty',
-        }),
-        password: Joi.string().required(),
+        name: Joi.string().required(),
         password: Joi.string().required().pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/).message('Password should be minimum eight characters, at least one letter and one number'),
         email: Joi.string().required().email(),
-        fullname: Joi.string().required(),
-        phone: Joi.string().required().pattern(/^08\d{8,}$/).message('Phone number should 08xxxxxxxxxx'),
+        gender: Joi.string().required(),
     });
 
     return schema.validate(httpRequest.body, option);

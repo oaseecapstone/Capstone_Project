@@ -3,7 +3,7 @@ const TokenManager = require('../../tokenize/TokenManager');
 
 module.exports = (authService) => ({
     loginUser: async (req) => {
-        const user = await authService.loginUser(req.body.username, req.body.password);
+        const user = await authService.loginUser(req.body.email, req.body.password);
 
         if (!user) {
             throw new Error('User not found');
