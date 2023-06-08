@@ -1,4 +1,5 @@
 const Models = require('../../models');
+const { Sequelize } = require('sequelize')
 
 const NewsCommentService = {
     createComment: async (news, comment) => {
@@ -46,6 +47,16 @@ const NewsCommentService = {
                 newsId
             },
             include: [{
+                model: Models.CommentLike,
+                attributes: [
+                    [Sequelize.literal(`(
+                        SELECT COUNT(*)
+                        FROM commentlike
+                        WHERE commentlike.commentId = NewsComment.id
+                    )`), 'countLike'],
+                ]
+            }],
+            include: [{
                 model: Models.User,
                 attributes: ['id', 'name', 'email', 'role'],
             }]
@@ -59,10 +70,21 @@ const NewsCommentService = {
                 id
             },
             include: [{
+                model: Models.CommentLike,
+                attributes: [
+                    [Sequelize.literal(`(
+                        SELECT COUNT(*)
+                        FROM commentlike
+                        WHERE commentlike.commentId = NewsComment.id
+                    )`), 'countLike'],
+                ]
+            }],
+            include: [{
                 model: Models.News,
                 attributes: ['id', 'title'],
             }]
         });
+        
         if (!newsComment) {
             throw new Error('Comment not found');
         }
@@ -92,6 +114,16 @@ const NewsCommentService = {
                 userId
             },
             include: [{
+                model: Models.CommentLike,
+                attributes: [
+                    [Sequelize.literal(`(
+                        SELECT COUNT(*)
+                        FROM commentlike
+                        WHERE commentlike.commentId = NewsComment.id
+                    )`), 'countLike'],
+                ]
+            }],
+            include: [{
                 model: Models.User,
                 attributes: ['id', 'name', 'email', 'gender'],
             }]
@@ -104,6 +136,16 @@ const NewsCommentService = {
             where: {
                 newsId
             },
+            include: [{
+                model: Models.CommentLike,
+                attributes: [
+                    [Sequelize.literal(`(
+                        SELECT COUNT(*)
+                        FROM commentlike
+                        WHERE commentlike.commentId = NewsComment.id
+                    )`), 'countLike'],
+                ]
+            }],
             include: [{
                 model: Models.News,
                 attributes: ['id', 'title', 'createdAt'],

@@ -3,25 +3,25 @@ const router = require('express').Router();
 const { makeExpressCallback, makeValidatorCallback } = require('../../middlewares');
 
 //service
-const NewsLikeService = require('./newslikes.service');
+const CommentLikeService = require('./commentlikes.service');
 
 //controller
-const NewsLikeController = require('./newslikes.controller')(NewsLikeService);
+const CommentLikeController = require('./commentlikes.controller')(CommentLikeService);
 
 //validator
-const NewsLikeValidator = require('./newslikes.validator');
+const CommentLikeValidator = require('./commentlikes.validator');
 
 //routes
-const routes = require('./newslikes.routes')({
+const routes = require('./commentlikes.routes')({
     router,
-    NewsLikeController,
+    CommentLikeController,
     makeExpressCallback,
     makeValidatorCallback,
-    NewsLikeValidator,
+    CommentLikeValidator,
 });
 
 module.exports = {
-    NewsLikeController,
-    NewsLikeService,
-    NewsLikeRoutes: routes,
+    CommentLikeController,
+    CommentLikeService,
+    CommentLikeRoutes: routes,
 }

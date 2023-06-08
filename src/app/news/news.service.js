@@ -9,6 +9,7 @@ const NewsService = {
                 model: Models.NewsLike,
             }, {
                 model: Models.NewsComment,
+                attributes: ['userId', 'comment', 'comment_time'],
             }]
         });
 
@@ -35,6 +36,7 @@ const NewsService = {
                   ]
             }, {
                 model: Models.NewsComment,
+                attributes: ['userId', 'comment', 'comment_time'],
             }]
         });
 
@@ -54,8 +56,16 @@ const NewsService = {
             },
             include: [{
                 model: Models.NewsLike,
+                attributes: [
+                    [Sequelize.literal(`(
+                        SELECT COUNT(*)
+                        FROM newslike
+                        WHERE newslike.newsId = News.id
+                    )`), 'countLike'],
+                  ]
             }, {
                 model: Models.NewsComment,
+                attributes: ['userId', 'comment', 'comment_time'],
             }]
         });
         

@@ -11,34 +11,36 @@ const options = {
     },
 };
 
-const getNewsLikeByNewsIdSchema = (httpRequest) => {
+const getCommentLikeByCommentIdSchema = (httpRequest) => {
     const schema = Joi.object({
-        newsId: Joi.number().required(),
+        commentId: Joi.number().required(),
     });
 
     return schema.validate(httpRequest.params, options);
 }
 
-const createNewsLikeSchema = (httpRequest) => {
+const createCommentLikeSchema = (httpRequest) => {
     const schema = Joi.object({
-        newsId: Joi.number().required(),
-        userId: Joi.number().required(),
+        // commentId: Joi.number().required(),
+        // userId: Joi.number().required(),
+        // newsId: Joi.number().required(),
     });
 
     return schema.validate(httpRequest.body, options);
 }
 
-const deleteNewsLikeSchema = (httpRequest) => {
+const deleteCommentLikeSchema = (httpRequest) => {
     const schema = Joi.object({
-        // newsId: Joi.number().required(),
+        // commentId: Joi.number().required(),
         // userId: Joi.number().required(),
+        // newsId: Joi.number().required(),
     });
 
     return schema.validate(httpRequest.body, options);
 }
 
 module.exports = {
-    getNewsLikeByNewsIdSchema,
-    createNewsLikeSchema,
-    deleteNewsLikeSchema,
+    getCommentLikeByCommentIdSchema,
+    createCommentLikeSchema,
+    deleteCommentLikeSchema,
 };

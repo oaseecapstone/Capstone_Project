@@ -1,56 +1,84 @@
 const Models = require('../../models');
 
-const NewsLikeService = {
-    createLikes: async (newsId, userId, commentId) => {
-        const news = await Models.News.findOne({
-            where: {
-                id: newsId
-            }
-        });
-        if (!news) {
-            throw new Error('News not found');
-        }
-        const newsLike = await Models.NewsLike.create({
-            newsId,
-            userId,
-            commentId
-        });
-        return newsLike;
-    },
-
-    getLikesByCommentId: async (commentId) => {
-        const newsComment = await Models.NewsComment.findOne({
+const CommentLikeService = {
+    createLikes: async (commentId, userId, newsId) => {
+        const comment = await Models.NewsComment.findOne({
             where: {
                 id: commentId
             }
         });
-        if (!newsComment) {
+
+        if (!comment) {
             throw new Error('Comment not found');
         }
-        const newsLike = await Models.NewsLike.findAndCountAll({
+
+        const user = await Models.User.findOne({
             where: {
-                commentId
+                id: userId
             }
         });
-        return newsLike;
-    },
 
-    deleteLikes: async (newsId, userId, commentId) => {
+        if (!user) {
+            throw new Error('User not found');
+        }
+
         const news = await Models.News.findOne({
             where: {
                 id: newsId
             }
         });
+
         if (!news) {
             throw new Error('News not found');
         }
-        const newsLike = await Models.NewsLike.destroy({
+
+        const commentLike = await Models.CommentLike.create({
+            commentId,
+            userId,
+            newsId
+        });
+        return commentLike;
+    },
+
+    getLikesByCommentId: async (commentId) => {
+        const comment = await Models.NewsComment.findOne({
             where: {
-                newsId,
-                userId,
+                id: commentId
+            }
+        });
+
+        if (!comment) {
+            throw new Error('Comment not found');
+        }
+
+        const commentLike = await Models.CommentLike.findAndCountAll({
+            where: {
                 commentId
             }
         });
-        return newsLike;
+        return commentLike;
+    },
+
+    deleteLikes: async (commentId, userId) => {
+        const comment = await Models.NewsComment.findOne({
+            where: {
+                id: commentId
+            }
+        });
+
+        if (!comment) {
+            throw new Error('Comment not found');
+        }
+
+        const commentLike = await Models.CommentLike.destroy({
+            where: {
+                commentId,
+                userId,
+                newsId
+            }
+        });
+        return commentLike;
     }
 }
+
+module.exports = CommentLikeService;

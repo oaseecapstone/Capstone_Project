@@ -1,47 +1,49 @@
-module.exports = (newsLikesService) => ({
-    createLike: async (req) => {
-        const newsLike = await newsLikesService.createLike(
-            req.params.newsId,
+module.exports = (commentLikeService) => ({
+    createLikes: async (req) => {
+        const commentLike = await commentLikeService.createLikes(
+            req.params.commentId,
             req.params.userId,
+            req.params.newsId
         );
 
         return {
             statusCode: 200,
             body: {
                 status: 'success',
-                message: 'News Like created',
-                data: newsLike
+                message: 'Comment Like created',
+                data: commentLike
             }
         }
     },
 
-    getLikesByNewsId: async (req) => {
-        const newsLike = await newsLikesService.getLikesByNewsId(
-            req.params.newsId,
+    getLikesByCommentId: async (req) => {
+        const commentLike = await commentLikeService.getLikesByCommentId(
+            req.params.commentId,
         );
 
         return {
             statusCode: 200,
             body: {
                 status: 'success',
-                message: 'News Like retrieved',
-                data: newsLike
+                message: 'Comment Like retrieved',
+                data: commentLike
             }
         }
     },
 
-    deleteLike: async (req) => {
-        const newsLike = await newsLikesService.deleteLike(
-            req.params.newsId,
-            req.body.like,
+    deleteLikes: async (req) => {
+        const commentLike = await commentLikeService.deleteLikes(
+            req.params.commentId,
+            req.params.userId,
+            req.params.newsId
         );
 
         return {
             statusCode: 200,
             body: {
                 status: 'success',
-                message: 'News Like deleted',
-                data: newsLike
+                message: 'Comment Like deleted',
+                data: commentLike
             }
         }
     }

@@ -2,34 +2,34 @@ const { auth } = require("../../middlewares");
 
 module.exports = ({
   router,
-  NewsLikeController,
+  CommentLikeController,
   makeExpressCallback,
   makeValidatorCallback,
-  NewsLikeValidator,
+  CommentLikeValidator,
 }) => {
   // auth
   router.use(auth);
 
-  // get newslike by news id
+  // get commentlike by comment id
   router.get(
-    "/news/:newsId",
-    makeValidatorCallback(NewsLikeValidator.getNewsLikeByNewsIdSchema),
-    makeExpressCallback(NewsLikeController.getNewsLikeByNewsId)
+    "/comment/:commentId",
+    makeValidatorCallback(CommentLikeValidator.getCommentLikeByCommentIdSchema),
+    makeExpressCallback(CommentLikeController.getLikesByCommentId)
   );
 
-  // create newslike
+  // create commentlike
   router.post(
-    "/create/:newsId/:userId",
-    makeValidatorCallback(NewsLikeValidator.createNewsLikeSchema),
-    makeExpressCallback(NewsLikeController.createNewsLike)
+    "/create/:commentId/:userId/:newsId",
+    makeValidatorCallback(CommentLikeValidator.createCommentLikeSchema),
+    makeExpressCallback(CommentLikeController.createLikes)
   );
 
-  // delete newslike
+  // delete commentlike
   router.delete(
-    "/delete/:newsId/:userId",
-    makeValidatorCallback(NewsLikeValidator.deleteNewsLikeSchema),
-    makeExpressCallback(NewsLikeController.deleteNewsLike)
+    "/delete/:commentId/:userId/:newsId",
+    makeValidatorCallback(CommentLikeValidator.deleteCommentLikeSchema),
+    makeExpressCallback(CommentLikeController.deleteLikes)
   );
 
   return router;
-};
+}

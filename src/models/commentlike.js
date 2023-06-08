@@ -47,5 +47,6 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'commentlike',
         modelName: 'CommentLike',
     });
+    
     return CommentLike;
 }

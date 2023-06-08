@@ -3,6 +3,7 @@ const { AuthRoutes } = require('../app/auth/auth.module');
 const { NewsRoutes } = require('../app/news/news.module');
 const { NewsLikeRoutes } = require('../app/newslikes/newslikes.module');
 const { NewsCommentRoutes } = require('../app/newscomments/newscomments.module');
+const { CommentLikeRoutes } = require('../app/commentlikes/commentlikes.module');
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
     {
         path: '/newscomment',
         router: NewsCommentRoutes,
+    },
+    {
+        path: '/commentlike',
+        router: CommentLikeRoutes,
     },
 ];
 
