@@ -5,27 +5,19 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class News extends Model {
         static associate(models) {
-            
+            News.hasMany(models.NewsLike, {
+                foreignKey: 'newsId',
+            });
+            News.hasMany(models.NewsComment, {
+                foreignKey: 'newsId',
+            });
+            News.hasMany(models.CommentLike, {
+                foreignKey: 'newsId',
+            });
         }
     };
 
     News.init({
-        newslikeId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'Newslike',
-                key: 'id',
-            }
-        },
-        newscommentId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'Newscomment',
-                key: 'id',
-            }
-        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -53,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        summerize: {
+        summarize: {
             type: DataTypes.STRING,
             allowNull: false,
         },

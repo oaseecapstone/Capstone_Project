@@ -8,41 +8,27 @@ module.exports = (sequelize, DataTypes) => {
           return { ...this.get(), password: undefined };
         }
         static associate(models) {
-            
-        }
+            User.hasMany(models.NewsLike, {
+                foreignKey: 'userId',
+            });
+            User.hasMany(models.NewsComment, {
+                foreignKey: 'userId',
+            });
+            User.hasMany(models.CommentLike, {
+                foreignKey: 'userId',
+            });
+        };
     };
 
     User.init({
-        newslikeId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'Newslike',
-                key: 'id',
-            }
-        },
-        newscommentId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'Newscomment',
-                key: 'id',
-            }
-        },
-        username: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                notEmpty: { msg: 'Username must not be empty' },
-            },
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: { msg: 'Password must not be empty' },
-            },
         },
         email: {
             type: DataTypes.STRING,

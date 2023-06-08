@@ -10,22 +10,6 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      newslikeId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Newslike',
-          key: 'id',
-        }
-      },
-      newscommentId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Newscomment',
-          key: 'id',
-        }
-      },
       title: {
         allowNull: false,
         type: Sequelize.STRING(100)
@@ -50,7 +34,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(100)
       },
-      summerize: {
+      summarize: {
         allowNull: false,
         type: Sequelize.STRING(100)
       },

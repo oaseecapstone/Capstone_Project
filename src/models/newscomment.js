@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
             NewsComment.belongsTo(models.User, {
                 foreignKey: 'userId',
             });
+            NewsComment.hasMany(models.CommentLike, {
+                foreignKey: 'commentId',
+            });
         }
     };
 
@@ -33,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         comment: {
             type: DataTypes.STRING,
+            allowNull: false,
+        },
+        comment_time: {
+            type: DataTypes.DATE,
             allowNull: false,
         },
     }, {

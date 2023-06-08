@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'User',
+          model: 'users',
           key: 'id',
         }
       },
@@ -22,17 +22,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'News',
+          model: 'news',
           key: 'id',
         }
       },
       comment: {
         allowNull: false,
         type: Sequelize.STRING(100)
-      },
-      comment_like: {
-        allowNull: false,
-        type: Sequelize.INTEGER
       },
       comment_time: {
         allowNull: false,

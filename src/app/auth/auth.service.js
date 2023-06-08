@@ -25,7 +25,7 @@ const AuthService = {
     createUser: async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 10);
         const newUser = await Models.User.create({
-            name: user.username,
+            name: user.name,
             password: hashedPassword,
             email: user.email,
             gender: user.gender,

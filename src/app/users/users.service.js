@@ -3,7 +3,7 @@ const Models = require('../../models');
 const UserService = {
     getAllUsers: async () => {
         const users = await Models.User.findAll({
-          attributes: ['id', 'username', 'email', 'fullname', 'phone', 'role'],
+          attributes: ['id', 'name', 'email', 'gender'],
         });
       
         return users;
@@ -14,7 +14,7 @@ const UserService = {
             where: {
                 id,
             },
-            attributes: ['id', 'username', 'email', 'fullname', 'phone', 'image', 'role'],
+            attributes: ['id', 'name', 'email', 'gender'],
         });
 
         if (!users) {
