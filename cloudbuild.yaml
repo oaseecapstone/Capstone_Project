@@ -1,3 +1,4 @@
 step :
 - name : 'gcr.io/cloud-builders/gcloud'
-  args : [ 'app', 'deploy' ]
+  args: ['run', 'deploy', 'backend-service', '--image', 'gcr.io/$PROJECT_ID/capstone-project-image', '--region', 'asia-southeast2']
+  branch: 'cloud_computing'
