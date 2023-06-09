@@ -7,5 +7,6 @@ module.exports = {
         accessTokenLife: process.env.JWT_ACCESS_TOKEN_LIFE,
         refreshTokenLife: process.env.JWT_REFRESH_TOKEN_LIFE,
     },
+    apiPrefix: process.env.API_PREFIX ?? '/api',
     nodeEnv: process.env.NODE_ENV ?? 'development',
 };

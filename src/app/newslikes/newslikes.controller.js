@@ -31,9 +31,9 @@ module.exports = (newsLikeService) => ({
     },
 
     deleteLike: async (req) => {
-        const newsLike = await newsLikeService.deleteLike(
+        const newsLike = await newsLikeService.deleteLikes(
             req.params.newsId,
-            req.body.like,
+            req.params.userId,
         );
 
         return {

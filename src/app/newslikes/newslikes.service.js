@@ -7,9 +7,21 @@ const NewsLikeService = {
                 id: newsId
             }
         });
+        
         if (!news) {
             throw new Error('News not found');
         }
+
+        const foundLike = await Models.NewsLike.findOne({
+            where: {
+                newsId, userId
+            }
+        });
+
+        if (foundLike) {
+            throw new Error('News already liked');
+        }
+
         const newsLike = await Models.NewsLike.create({
             newsId,
             userId

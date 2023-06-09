@@ -55,10 +55,12 @@ const NewsCommentService = {
                         WHERE commentlike.commentId = NewsComment.id
                     )`), 'countLike'],
                 ]
-            }],
-            include: [{
+            }, {
+                model: Models.News,
+                attributes: ['id', 'title', 'createdAt'],
+            }, {
                 model: Models.User,
-                attributes: ['id', 'name', 'email', 'role'],
+                attributes: ['id', 'name', 'email', 'gender'],
             }]
         });
         return newsComments;
@@ -78,13 +80,15 @@ const NewsCommentService = {
                         WHERE commentlike.commentId = NewsComment.id
                     )`), 'countLike'],
                 ]
-            }],
-            include: [{
+            }, {
                 model: Models.News,
-                attributes: ['id', 'title'],
+                attributes: ['id', 'title', 'createdAt'],
+            }, {
+                model: Models.User,
+                attributes: ['id', 'name', 'email', 'gender'],
             }]
         });
-        
+
         if (!newsComment) {
             throw new Error('Comment not found');
         }
@@ -122,11 +126,10 @@ const NewsCommentService = {
                         WHERE commentlike.commentId = NewsComment.id
                     )`), 'countLike'],
                 ]
-            }],
-            include: [{
+            }, {
                 model: Models.User,
                 attributes: ['id', 'name', 'email', 'gender'],
-            }]
+            }],
         });
         return newsComment;
     },
@@ -145,8 +148,7 @@ const NewsCommentService = {
                         WHERE commentlike.commentId = NewsComment.id
                     )`), 'countLike'],
                 ]
-            }],
-            include: [{
+            }, {
                 model: Models.News,
                 attributes: ['id', 'title', 'createdAt'],
             }]

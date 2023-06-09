@@ -16,12 +16,8 @@ module.exports = {
         return token;
     },
 
-    verifyToken: (token) => {
-        try {
-            const decoded = jwt.verify(token, config.jwt.accessTokenSecret);
-            return decoded;
-        } catch (error) {
-            return null;
-        }
+    verifyAccessToken: (token) => {
+        const decoded = jwt.verify(token, config.jwt.accessTokenSecret);
+        return decoded;  
     }
 }

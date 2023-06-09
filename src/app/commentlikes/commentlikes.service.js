@@ -32,6 +32,16 @@ const CommentLikeService = {
             throw new Error('News not found');
         }
 
+        const foundCommentLike = await Models.CommentLike.findOne({
+            where: {
+                commentId, userId, newsId
+            }
+        });
+
+        if (foundCommentLike) {
+            throw new Error('Comment already liked');
+        }
+
         const commentLike = await Models.CommentLike.create({
             commentId,
             userId,
@@ -59,7 +69,7 @@ const CommentLikeService = {
         return commentLike;
     },
 
-    deleteLikes: async (commentId, userId) => {
+    deleteLikes: async (commentId, userId, newsId) => {
         const comment = await Models.NewsComment.findOne({
             where: {
                 id: commentId
