@@ -9,7 +9,7 @@ module.exports = ({
 }) => {
     
         // auth
-        router.use(auth);
+        // router.use(auth);
     
         // get all news
         router.get(
