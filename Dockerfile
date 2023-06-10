@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -8,6 +8,12 @@ COPY package-lock.json .
 
 RUN npm install
 
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/ .
+
 COPY . .
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
