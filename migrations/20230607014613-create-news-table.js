@@ -1,5 +1,7 @@
 'use strict';
 
+const { get } = require('../src/app');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -12,35 +14,31 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING()
       },
       author: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING()
       },
-      time: {
+      timestamp: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE(),
       },
       sentiment: {
         allowNull: false,
         type: Sequelize.ENUM('positive', 'negative', 'neutral')
       },
-      score: {
+      url: {
         allowNull: false,
-        type: Sequelize.FLOAT
-      },
-      Url: {
-        allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING()
       },
       summarize: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(3000)
       },
       keyword: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(3000)
       },
       createdAt: {
         allowNull: false,

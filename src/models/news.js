@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        time: {
+        timestamp: {
             type: DataTypes.DATE,
             allowNull: false,
         },
@@ -37,11 +37,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.ENUM('positive', 'negative', 'neutral'),
             allowNull: false,
         },
-        score: {
-            type: DataTypes.FLOAT,
-            allowNull: false,
-        },
-        Url: {
+        url: {
             type: DataTypes.STRING,
             allowNull: false,
         },
