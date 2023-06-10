@@ -4,7 +4,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/capstone-project-image']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'backend-capstone-service', '--image', 'gcr.io/$PROJECT_ID/capstone-project-image', '--region', 'us-central1', '--platform', 'linux/amd64', '--port', '8000', '--allow-unauthenticated']
+    args: ['run', 'deploy', 'backend-capstone-service', '--image', 'gcr.io/$PROJECT_ID/capstone-project-image', '--region', 'us-central1', '--platform', 'managed', '--port', '8000', '--allow-unauthenticated']
 images:
   - 'gcr.io/$PROJECT_ID/capstone-project-image'
   
