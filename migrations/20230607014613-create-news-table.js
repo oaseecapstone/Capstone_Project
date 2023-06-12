@@ -20,6 +20,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING()
       },
+      score: {
+        allowNull: true,
+        type: Sequelize.FLOAT()
+      },
       timestamp: {
         allowNull: false,
         type: Sequelize.DATE(),

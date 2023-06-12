@@ -39,7 +39,11 @@ module.exports = (newsService) => ({
     },
 
     createNews: async (req) => {
-        const news = await newsService.createNews(req.body);
+        console.log(req.body);
+        const news = await newsService.createNews(
+            req.body
+            );
+
 
         return {
             statusCode: 201,

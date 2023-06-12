@@ -31,10 +31,10 @@ const createNewsSchema = (httpRequest) => {
     const schema = Joi.object({
         title: Joi.string().required(),
         author: Joi.string().required(),
-        time: Joi.date().required(),
+        timestamp: Joi.date(),
         sentiment: Joi.string().required(),
-        score: Joi.number().required(),
-        Url: Joi.string().required(),
+        score: Joi.number(),
+        url: Joi.string(),
         summarize: Joi.string().required(),
         keyword: Joi.string().required(),
     });

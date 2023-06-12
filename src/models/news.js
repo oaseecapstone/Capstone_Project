@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        score: {
+            type: DataTypes.FLOAT,
+            allowNull: true,
+        },
         timestamp: {
             type: DataTypes.DATE,
             allowNull: false,

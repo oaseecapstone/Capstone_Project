@@ -1,4 +1,5 @@
 const Models = require('../../models');
+const axios = require('axios');
 const { Op } = require('sequelize');
 const { Sequelize } = require('sequelize')
 
@@ -17,7 +18,39 @@ const NewsService = {
             throw new Error('News not found');
         }
 
-        return news;
+        const predict = async (fulltext) => {
+            try {
+                const response = await axios.post('https://gethoaxnewmodel-jtlt6za6ta-uc.a.run.app/hoax-predict', {
+                    input_text: fulltext
+            }
+            );
+                return response.data.hoax_percentage;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        const newsWithPredict = await Promise.all(news.map(async (item) => {
+            const predictResult = await predict(item.summarize);
+            return {
+                ...item.toJSON(),
+                score: predictResult
+            }
+        }
+        ));
+
+        await Promise.all(newsWithPredict.map(async (item) => {
+            const newsInstance = await Models.News.findOne({
+                where: {
+                    id: item.id
+                }
+            });
+            newsInstance.score = item.score;
+            await newsInstance.save();
+        }
+        ));
+
+        return newsWithPredict;
     },
 
     getNewsById: async (id) => {
@@ -78,16 +111,16 @@ const NewsService = {
 
     createNews: async (news) => {
         const {
-            title, author, time, sentiment, score, Url, summarize, keyword
+            title, author, score, timestamp, sentiment, url, summarize, keyword
         } = news;
 
         const newNews = await Models.News.create({
             title,
             author,
-            time,
-            sentiment,
             score,
-            Url,
+            timestamp,
+            sentiment,
+            url,
             summarize,
             keyword
         });
