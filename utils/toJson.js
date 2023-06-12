@@ -17,7 +17,7 @@ const toJSON = (csv) => {
     );
     const csvRecordsArray = csvData.split(/\r?\n|\r/);
   
-    const headers = ["title", "author", "timestamp", "score", "sentiment", "url", "summarize", "keyword"];
+    const headers = ["title", "author", "timestamp", "fulltext", "score", "sentiment", "url", "summarize", "keyword"];
     const jsonArray = [];
   
     for (let i = 0; i < csvRecordsArray.length; i++) {

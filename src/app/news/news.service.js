@@ -31,10 +31,14 @@ const NewsService = {
         }
 
         const newsWithPredict = await Promise.all(news.map(async (item) => {
-            const predictResult = await predict(item.summarize);
+            if (item.score === 0) {
+            const predictResult = await predict(item.fulltext);
             return {
                 ...item.toJSON(),
-                score: predictResult
+                score: parseInt(predictResult*100)
+            }
+            } else {
+                return item.toJSON();
             }
         }
         ));
@@ -127,6 +131,21 @@ const NewsService = {
 
         return newNews;
     },
+
+    getNewsByTitle: async (title) => {
+        try {
+            const news = await Models.News.findAll({
+                where: {
+                    title: {
+                        [Op.like]: `%${title}%`
+                    }
+                },
+            });
+            return news;
+        } catch {
+            throw new Error('News not found');
+        }
+    }
 
 }
 

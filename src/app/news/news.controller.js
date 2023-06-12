@@ -53,6 +53,20 @@ module.exports = (newsService) => ({
                 data: news
             }
         }
+    },
+
+    searchNewsByTitle: async (req) => {
+        console.log(req);
+        const news = await newsService.getNewsByTitle(req.query);
+
+        return {
+            statusCode: 200,
+            body: {
+                status: 'success',
+                message: 'News retrieved',
+                data: news
+            }
+        }
     }
 })
 

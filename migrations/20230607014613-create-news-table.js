@@ -20,13 +20,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING()
       },
-      score: {
-        allowNull: true,
-        type: Sequelize.FLOAT()
-      },
       timestamp: {
         allowNull: false,
         type: Sequelize.DATE(),
+      },
+      fulltext: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      score: {
+        allowNull: true,
+        type: Sequelize.FLOAT()
       },
       sentiment: {
         allowNull: false,

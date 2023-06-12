@@ -37,5 +37,13 @@ module.exports = ({
             makeExpressCallback(NewsController.createNews),
         );
 
+        // get news by title
+        router.get(
+            '/search?title',
+            makeValidatorCallback(NewsValidator.getNewsByTitleSchema),
+            makeExpressCallback(NewsController.searchNewsByTitle),
+        );
+
+
         return router;
 }
