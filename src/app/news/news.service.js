@@ -20,7 +20,7 @@ const NewsService = {
 
         const predict = async (fulltext) => {
             try {
-                const response = await axios.post('https://gethoaxnewmodel-jtlt6za6ta-uc.a.run.app/hoax-predict', {
+                const response = await axios.post('https://gethoaxnewmodel-zspbba3n6a-uc.a.run.app/hoax-predict', {
                     input_text: fulltext
             }
             );
