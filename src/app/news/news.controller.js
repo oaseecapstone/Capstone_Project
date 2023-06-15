@@ -1,5 +1,6 @@
 module.exports = (newsService) => ({
     getAllNews: async (req) => {
+        console.log("getAllNews",req);
         const news = await newsService.getAllNews();
 
         return {
@@ -13,6 +14,7 @@ module.exports = (newsService) => ({
     },
 
     getNewsById: async (req, res) => {
+        console.log("getNewsById",req)
         const news = await newsService.getNewsById(req.params.id);
 
         return {
@@ -26,6 +28,7 @@ module.exports = (newsService) => ({
     },
 
     getNewsByKeyword: async (req, res) => {
+        console.log("getNewsByKeyword",req);
         const news = await newsService.getNewsByKeyword(req.params.keyword);
         const totalResult = news.length;
 
@@ -41,7 +44,7 @@ module.exports = (newsService) => ({
     },
 
     createNews: async (req) => {
-        console.log(req.body);
+        console.log("createNews",req);
         const news = await newsService.createNews(
             req.body
             );
@@ -58,7 +61,7 @@ module.exports = (newsService) => ({
     },
 
     searchNewsByTitle: async (req) => {
-        console.log(req);
+        console.log("searchNews",req);
         const news = await newsService.getNewsByTitle(req.query);
 
         return {

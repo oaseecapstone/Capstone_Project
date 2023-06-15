@@ -43,17 +43,8 @@ const createNewsSchema = (httpRequest) => {
     return schema.validate(httpRequest.body, options);
 }
 
-const getNewsByTitleSchema = (httpRequest) => {
-    const schema = Joi.object({
-        title: Joi.string().required(),
-    });
-
-    return schema.validate(httpRequest.query, options);
-}
-
 module.exports = {
     getNewsByIdSchema,
     getNewsByKeywordSchema,
     createNewsSchema,
-    getNewsByTitleSchema,
 };

@@ -16,13 +16,6 @@ module.exports = ({
             '/', 
             makeExpressCallback(NewsController.getAllNews));
     
-        // get news by id
-        router.get(
-            '/:id', 
-            makeValidatorCallback(NewsValidator.getNewsByIdSchema),
-            makeExpressCallback(NewsController.getNewsById),
-        );
-    
         // get news by keyword
         router.get(
             '/keyword/:keyword',
@@ -39,9 +32,15 @@ module.exports = ({
 
         // get news by title
         router.get(
-            '/search?title',
-            makeValidatorCallback(NewsValidator.getNewsByTitleSchema),
+            '/search',
             makeExpressCallback(NewsController.searchNewsByTitle),
+        );
+
+        // get news by id
+        router.get(
+            '/:id', 
+            makeValidatorCallback(NewsValidator.getNewsByIdSchema),
+            makeExpressCallback(NewsController.getNewsById),
         );
 
 

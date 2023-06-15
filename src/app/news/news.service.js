@@ -70,18 +70,31 @@ const NewsService = {
                         FROM newslike
                         WHERE newslike.newsId = News.id
                     )`), 'countLike'],
-                  ]
+                    ]
             }, {
                 model: Models.NewsComment,
                 attributes: ['userId', 'comment', 'comment_time'],
             }]
         });
 
+        const relatedNews = await Models.News.findAll({
+            where: {
+                sentiment: {
+                    [Op.eq]: 'positive'
+                },
+            },
+            order: Sequelize.literal('rand()'),
+            limit: 10,
+        });
+
         if (!news) {
             throw new Error('News not found');
         }
 
-        return news;
+        return {
+            ...news.toJSON(),
+            relatedNews
+        };
     },
 
     getNewsByKeyword: async (keyword) => {
@@ -132,12 +145,13 @@ const NewsService = {
         return newNews;
     },
 
-    getNewsByTitle: async (title) => {
+    getNewsByTitle: async (query) => {
+        console.log(query);
         try {
             const news = await Models.News.findAll({
                 where: {
                     title: {
-                        [Op.like]: `%${title}%`
+                        [Op.like]: `%${query.title}%`
                     }
                 },
             });
