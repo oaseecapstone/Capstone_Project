@@ -147,7 +147,6 @@ const NewsService = {
     },
 
     getNewsByTitle: async (query) => {
-        console.log(query);
         try {
             const news = await Models.News.findAll({
                 where: {
