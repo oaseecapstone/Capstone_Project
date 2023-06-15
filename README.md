@@ -5,18 +5,33 @@ Capstone Team ID : C23 - PS110 <br>
 Here is our repository for Bangkit 2022 Capstone project - Machine Learning.
 
 ## MACHINE LEARNING SCHEDULE
-|         Week 1         |         Week 1         |         Week 3         |         Week 4         |  
-| :--------------------: | :--------------------: | :--------------------: | :--------------------: |
-| Collecting  Available Datasets or Generating Dummy Datasets  | Implementing NLP Tecnique, Architecture, and Algorithms | Model Deployment | Adding more Datasets |
-| Defining Features Required and Collecting/Generating Datasets | Model Training | Adding more Datasets | Model Improvement |
-| Determining and Researching about NLP Techniques | Model Evaluation |
+| WBS  | Task                                                  | Start Date | End Date   | Duration (days) |
+| :-:  | ----------------------------------------------------- | :--------: | :--------: | :-------------: |
+| 2.1  | Collecting Available Datasets or Generating Dummy Datasets |   15 May   |   18 May   |        4        |
+| 2.2  | Defining Features Required and Collecting/Generating Datasets |   16 May   |   18 May   |        3        |
+| 2.3  | Building, Cleaning, Refining Datasets              |   17 May   |   22 May   |        4        |
+| 2.4  | Determining and Researching about NLP Techniques   |   17 May   |   22 May   |        4        |
+| 2.5  | Implementing NLP Technique, Architecture, and Algorithms |   18 May   |   26 May   |        7        |
+| 2.6  | Model Training                                    |   22 May   |   26 May   |        5        |
+| 2.7  | Model Evaluation                                  |   24 May   |   26 May   |        3        |
+| 2.8  | Model Deployment                                  |   25 May   |   26 May   |        2        |
+| 2.9  | Adding more Datasets                              |   19 May   |   26 May   |        6        |
+| 2.10 | Model Improvement                                |   26 May   |  09 June   |       12        |
+
+[Project Schedule "OASEE : Fake News Detector" [C23-PSS110]](https://docs.google.com/spreadsheets/d/18yY8Lj9lcF2pc_yETkXEsqmvu8s3BaSf5pGjb2TOfEY/edit?usp=sharing)
 
 ## DESCRIPTION
-There 3 Machine Learning model: model_Hoax_or_Fact_validation.h5, model_summarize_text.h5, and model_sentiment_analysis.h5
+There 3 Machine Learning model:
+- Fake News Detection
+- Text Summarization
+- Sentiment Analysis
 
 ## TOOLS
 - Python
 - TensorFlow
+- scikit-learn
+- NLTK
+- Transformers 
 - NumPy
 - Pandas
 - Seaborn
