@@ -22,9 +22,11 @@ Here is our repository for Bangkit 2022 Capstone project - Machine Learning.
 
 ## DESCRIPTION
 There 3 Machine Learning model:
-- Fake News Detection
-- Text Summarization
-- Sentiment Analysis
+- [Fake News Detection](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning/ML/Hoax%20Detection)
+- [Text Summarization](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning/ML/Text%20Summarize)
+- [Sentiment Analysis](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning/ML/Sentiment%20Analysis)
+
+We utilize advanced machine learning techniques, including Convolutional Neural Networks (CNN) for fake news filtering, K-means clustering for sentiment analysis, and algorithms for text summarization based on sentence similarity. The CNN model effectively identifies and filters fake news, ensuring users receive reliable information. K-means clustering analyzes sentiment in news articles, providing users with a broader perspective. Our text summarization algorithm condenses articles by prioritizing important information, allowing users to grasp key points efficiently.
 
 ## TOOLS
 - Python
