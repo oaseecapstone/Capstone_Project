@@ -74,7 +74,8 @@ const NewsService = {
             }, {
                 model: Models.NewsComment,
                 attributes: ['userId', 'comment', 'comment_time'],
-            }]
+            }],
+            exclude: ['fulltext']
         });
 
         const relatedNews = await Models.News.findAll({
