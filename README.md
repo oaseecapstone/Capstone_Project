@@ -30,8 +30,8 @@ The primary objective is to develop an advanced information filtering mechanism 
 
 |    Branch Name     |                                      Branch Link                                       |
 | :----------------: | :------------------------------------------------------------------------------------: |
-| Mobile Development | [MD Branch](https://github.com/oaseecapstone/Capstone_Project/tree/cloud_computing)    |
-|  Cloud Computing   | [CC Branch](https://github.com/oaseecapstone/Capstone_Project/tree/mobile_development) |
+| Mobile Development | [MD Branch](https://github.com/oaseecapstone/Capstone_Project/tree/mobile_development)   |
+|  Cloud Computing   | [CC Branch](https://github.com/oaseecapstone/Capstone_Project/tree/cloud_computing) |
 |  Machine Learning  | [ML Branch](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning)   |
 
 https://oaseecapstone.github.io/Capstone_Project/
