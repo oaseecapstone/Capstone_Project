@@ -75,7 +75,7 @@ const NewsService = {
                 model: Models.NewsComment,
                 attributes: ['userId', 'comment', 'comment_time'],
             }],
-            exclude: ['fulltext']
+            attributes: {exclude: ['fulltext']}
         });
 
         const limitPerSentiment = {
@@ -90,6 +90,8 @@ const NewsService = {
                 [Op.in]: ['positive', 'neutral', 'negative']
               }
             },
+            attributes: ['id', 'title', 'author', 'score', 'timestamp', 'sentiment', 'url', 'summarize', 'keyword'],
+            exclude: ['fulltext'],
             order: Sequelize.literal('rand()'),
             limit: null,
             separate: true
