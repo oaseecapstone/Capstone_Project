@@ -41,11 +41,11 @@ We utilize advanced machine learning techniques, including Convolutional Neural 
 - Google Colab
 
 ## DATASETS
-We get the dataset from 4 website (detik.com, nasional.kompas.com, cnnindonesia.com, turnbackhoax.id)
+We get the [dataset from 4 website](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning/ML/Dataset/RAW%20Scraping) (detik.com, nasional.kompas.com, cnnindonesia.com, turnbackhoax.id) and then implement the model to generate a feature database
 
-- [Dataset 1](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_hoax_or_fact_feature.csv)
-- [Dataset 2](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_summarize_text_feature.csv)
-- [Dataset 3](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_sentiment_analysis_feature.csv)
+- [Data 1](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_hoax_or_fact_feature.csv)
+- [Data 2](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_summarize_text_feature.csv)
+- [Data 3](https://github.com/oaseecapstone/Capstone_Project/blob/machine_learning/ML/Dataset/dataset_sentiment_analysis_feature.csv)
 
 ## DEPLOYMENT 
 We will use TensorFlow Lite to deploy a trained Machine Learning model on Android.
