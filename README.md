@@ -4,7 +4,6 @@
 
 Bangkit Capstone Team ID : C23 - PS110 <br>
 Here is our repository for Bangkit 2023 Capstone project. Our team consist of 3 Machine Learning, 1 Mobile Development, and 2 Cloud Computing.
-https://oaseecapstone.github.io/Capstone_Project/
 
 ## Our Warriors
 
@@ -28,3 +27,5 @@ OASEE is Application of Prediction the validity of a news.
 | Mobile Development | [MD Branch](https://github.com/oaseecapstone/Capstone_Project/tree/cloud_computing)    |
 |  Cloud Computing   | [CC Branch](https://github.com/oaseecapstone/Capstone_Project/tree/mobile_development) |
 |  Machine Learning  | [ML Branch](https://github.com/oaseecapstone/Capstone_Project/tree/machine_learning)   |
+
+https://oaseecapstone.github.io/Capstone_Project/
