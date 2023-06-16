@@ -20,6 +20,12 @@ Here is our repository for Bangkit 2023 Capstone project. Our team consist of 3 
 
 OASEE is Application of Prediction the validity of a news.
 
+The exponential growth of information has created a deluge of data, leaving individuals inundated with news and content. However, amidst this abundance, distinguishing reliable and authentic information from fake news has become increasingly challenging. Fake news has proliferated, muddying the waters and making it difficult for individuals to differentiate between fact and fiction. Recognizing the critical need for a reliable information filtration system, the project aims to address this pressing issue.
+
+The primary objective is to develop an advanced information filtering mechanism that serves as a robust safeguard against fake news. Simultaneously, we prioritize the development of two additional key features: a diverse perspective comparison and a news summarization capability. To achieve these goals, we have adopted a multifaceted approach combining machine learning, android application development, and cloud infrastructure.
+
+## Screenshots/Demo
+
 ## Repositories
 
 |    Branch Name     |                                      Branch Link                                       |
