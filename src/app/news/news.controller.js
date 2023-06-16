@@ -22,7 +22,7 @@ module.exports = (newsService) => ({
             body: {
                 status: 'success',
                 message: 'News retrieved',
-                data: news
+                data: news,
             }   
         }
     },

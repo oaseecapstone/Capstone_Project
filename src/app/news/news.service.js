@@ -78,15 +78,30 @@ const NewsService = {
             exclude: ['fulltext']
         });
 
-        const relatedNews = await Models.News.findAll({
+        const limitPerSentiment = {
+            positive: 4,
+            neutral: 3,
+            negative: 3
+          };
+          
+          const relatedNews = await Models.News.findAll({
             where: {
-                sentiment: {
-                    [Op.eq]: 'positive'
-                },
+              sentiment: {
+                [Op.in]: ['positive', 'neutral', 'negative']
+              }
             },
             order: Sequelize.literal('rand()'),
-            limit: 10,
-        });
+            limit: null,
+            separate: true
+          });
+          
+          
+          const limitedNews = [];
+          for (const sentiment in limitPerSentiment) {
+            const count = limitPerSentiment[sentiment];
+            const filteredNews = relatedNews.filter(news => news.sentiment === sentiment).slice(0, count);
+            limitedNews.push(...filteredNews);
+          }
 
         if (!news) {
             throw new Error('News not found');
@@ -94,7 +109,7 @@ const NewsService = {
 
         return {
             ...news.toJSON(),
-            relatedNews
+            relatedNews: limitedNews
         };
     },
 
